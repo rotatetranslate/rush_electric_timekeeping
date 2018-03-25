@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-// const url = process.env.MONGODB_URI || 'mongodb://localhost/pet';
+const mongoose = require('mongoose')
+const url = process.env.MONGODB_URI || 'mongodb://localhost/rush_electric'
 
-mongoose.connect(url, {useMongoClient: true});
+mongoose.connect(url)
 
-module.exports = mongoose;
+module.exports = mongoose

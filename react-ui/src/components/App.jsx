@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import Login from './Login'
+import MyRouter from './Router'
 
 const theme = createMuiTheme({
   overrides: {
@@ -42,7 +43,7 @@ const theme = createMuiTheme({
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
-    <Login />
+    <MyRouter />
   </MuiThemeProvider>
 )
 

@@ -4,11 +4,11 @@ const TimeSheet = require('./timesheet')
 
 const UserSchema = new mongoose.Schema({
 	accessToken: String,
-	admin: { type: Boolean, default: false }
+	admin: { type: Boolean, default: false },
 	email: { type: String, require: true, unique: true },
-	hasSetCustomPassword: { type: Boolean, default: false }
+	hasSetCustomPassword: { type: Boolean, default: false },
   password: { type: String, required: true },
-	username: { type: String, required: true, unique: true },
+	name: {type: String, required: true, unique: true }
 })
 
 UserSchema.pre('save', function(next) {

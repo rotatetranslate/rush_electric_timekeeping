@@ -8,13 +8,15 @@ const users = [
   {
     email: 'rushelectric@att.net',
     password: 'password',
-		admin: true
+    admin: true,
+    name: 'Mike Izykowski'
   },
-	{
-		email: 'adamberro@gmail.com',
-		password: 'abc123',
-		admin: false
-	}
+  {
+    email: 'adamberro@gmail.com',
+    password: 'abc123',
+    admin: false,
+    name: 'Adam Berro'
+  }
 ]
 
 const projects = [
@@ -23,37 +25,36 @@ const projects = [
   }
 ]
 
-TimeSheet.remove({}, err => {
-	if (err) console.log(err)
+const seed = async () => {
+  try {
+    const removedTimesheets = await TimeSheet.remove({})
+    console.log('removedTimesheets', removedTimesheets)
 
-  Project.remove({}, err => {
-    if (err) console.log(err)
+    const removedProjects = await Project.remove({})
+    console.log('removedProjects', removedProjects)
 
-    User.remove({}, err => {
-      if (err) console.log(err)
+    const removedUsers = await User.remove({})
+    console.log('removedUsers', removedUsers)
 
-      User.create(users, (err, users) => {
-        console.log(users)
+    const seededUsers = await User.create(users)
+    console.log('created users', seededUsers)
 
-        Project.create(projects, (err, projects) => {
-          console.log(projects)
-          const timesheets = [
-            {
-              employee: users[0]._id,
-              hours: 8,
-              project: projects[0]._id
-            }
-          ]
+    const seededProjects = await Project.create(projects)
+    console.log('created projects', seededProjects)
 
-          TimeSheet.create(timesheets, (err, timesheets) => {
-            if (err) console.log(err)
+    const timesheets = [
+      {
+        employee: seededUsers[0]._id,
+        hours: 8,
+        project: seededProjects[0]._id
+      }
+    ]
 
-            console.log('db seeded with users', users)
-            console.log('db seeded with projects', projects)
-            console.log('db seeded with timesheets', timesheets)
-          })
-        })
-      })
-    })
-  })
-})
+    const seededTimesheets = await TimeSheet.create(timesheets)
+    console.log('created timesheets', seededTimesheets)
+  } catch(error) {
+    console.log('error seeding db: ', error)
+  }
+}
+
+seed()
