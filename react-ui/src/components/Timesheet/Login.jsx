@@ -2,34 +2,34 @@ import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
-import Button from 'material-ui/Button';
-import Logo from './Logo'
+import Button from 'material-ui/Button'
+import Logo from '../Logo'
 
-const styles = (theme) => {
-  console.log('theme', theme)
-  return {
-    loginContainer: {
-      backgroundColor: theme.palette.primary.dark,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      height: '100vh',
-    },
-    paperContainer: {
-      backgroundColor: theme.palette.primary.light,
-      marginTop: 25,
-      padding: '50px',
-    },
-    loginButton: {
-      marginTop: 30,
-    },
-    loginForm: {
-      display: 'flex',
-      flexDirection: 'column'
-    },
+const styles = theme => ({
+  loginContainer: {
+    backgroundColor: theme.palette.primary.dark,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
+    height: '100vh',
+  },
+  paperContainer: {
+    backgroundColor: theme.palette.primary.light,
+    marginTop: 25,
+    padding: '50px',
+  },
+  loginButton: {
+    marginTop: 30,
+  },
+  loginForm: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  title: {
+    color: theme.palette.primary.contrastText
   }
-}
+})
 
 const nestedElementProps = {
   style: {
@@ -87,7 +87,7 @@ class Login extends Component {
 
         <Logo height={100} />
 
-        <h2 style={{color: 'white'}}>Time Sheets</h2>
+        <h2 className={classes.title}>Time Sheets</h2>
         <Paper className={classes.paperContainer}>
 
 
