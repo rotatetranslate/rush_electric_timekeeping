@@ -48,30 +48,25 @@ class ContactForm extends Component {
 
   submitContactForm = async event => {
     console.log('submitting form')
-    const { username, password } = this.state
-    console.log(JSON.stringify({username, password}))
     event.preventDefault()
-    if (!username || !password) {
-      this.setState({ error: '⚠️ Please enter your credentials ⚠️'})
-    } else {
-      try {
-        console.log('JSON.stringify({username, password})', JSON.stringify({username, password}))
-        const response = await fetch('auth/login/', {
-          method: 'post',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({username, password})
-        })
-        console.log('response', response)
-        const json = await response.json()
-        console.log('json', json)
-      } catch(error) {
-        console.log('error logging in', error)
-      }
+    try {
+      const { errors, ...information } = this.state
+      const response = await fetch('mail/', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(information)
+      })
+      console.log('response', response)
+      // const json = await response.json()
+      // console.log('json', json)
+    } catch(error) {
+      console.log('error submitting form', error)
     }
   }
+
 
   render() {
     const { classes } = this.props

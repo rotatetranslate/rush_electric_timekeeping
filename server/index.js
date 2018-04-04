@@ -19,6 +19,7 @@ app.use(express.static(path.resolve(__dirname, '../react-ui/src/assets')))
 app.use(passport.initialize())
 
 const authRoutes = require('./routes/auth')
+const mailRoutes = require('./routes/mail')
 // const timesheetRoutes = require('./routes/timesheet')
 
 app.get('/*', (req, res) => {
@@ -26,6 +27,7 @@ app.get('/*', (req, res) => {
  })
 
 app.use('/auth', authRoutes)
+app.use('/mail', mailRoutes)
 // app.use('/time', timesheetRoutes)
 
 const port = process.env.PORT || 3001
