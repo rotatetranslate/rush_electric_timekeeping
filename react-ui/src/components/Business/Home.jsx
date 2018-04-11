@@ -17,6 +17,8 @@ const styles = () => ({
     backgroundColor: 'rgba(0, 0, 0, 0.75)',
     color: 'white',
     width: '60vw',
+    padding: '20px 30px',
+    lineHeight: '1.3em'
   }
 })
 

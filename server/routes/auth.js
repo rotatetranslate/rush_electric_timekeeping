@@ -6,20 +6,17 @@ require('../passport/local_login')(passport)
 // require('../passport/local_signup')(passport)
 
 router.post('/login', (req, res, next) => {
-  console.log('hit auth/login')
-  console.log('req.body', req.body)
+  console.log('req.body.username', req.body)
   passport.authenticate('login', (err, token) => {
-    console.log('err', err)
-    console.log('token', token)
     err ? res.json({error: err.message}) : res.json({token})
   })(req, res, next)
 })
 
-// router.post('/jwt', (req, res, next) => {
-//   passport.authenticate('jwt', (err, user) => {
-//     err ? res.json({error: err.message}) : res.json(user)
-//   })(req, res, next)
-// })
+router.post('/jwt', (req, res, next) => {
+  passport.authenticate('jwt', (err, user) => {
+    err ? res.json({error: err.message}) : res.json(user)
+  })(req, res, next)
+})
 //
 // router.post('/signup', (req, res, next) => {
 //   passport.authenticate('signup', (err, token) => {

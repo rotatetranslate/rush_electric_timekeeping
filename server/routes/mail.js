@@ -10,12 +10,11 @@ const msg = {
 const express = require('express')
 const router = express.Router()
 
-cont rushElectricEmail = 'adamberro@gmail.com'
+const rushElectricEmail = 'adamberro@gmail.com'
 
 const mailForm = async message => {
   const sgMail = require('@sendgrid/mail')
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-  // sgMail.setApiKey('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')
   try {
     const result = sgMail.send(message)
   } catch(error) {
@@ -33,19 +32,19 @@ router.post('/', async (req, res, next) => {
     message
   } = req.body
 
-  const message = {
+  const emailMessage = {
     to: rushElectricEmail,
     from: email,
     subject,
     text: `
-      Name: ${name}\n
-      Phone: ${phone}\n
+      Name: ${name}
+      Phone: ${phone}
       ${message}
     `
   }
 
   try {
-    const response = await mailForm(message)
+    const response = await mailForm(emailMessage)
   } catch(error) {
     console.log(error)
   }

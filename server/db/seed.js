@@ -52,6 +52,7 @@ const seed = async () => {
 
     const seededTimesheets = await TimeSheet.create(timesheets)
     console.log('created timesheets', seededTimesheets)
+    process.exit()
   } catch(error) {
     console.log('error seeding db: ', error)
   }

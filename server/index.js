@@ -10,8 +10,8 @@ const app = express()
 require('./db/config')
 
 app.use(morgan('dev'))
-app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
 app.use(express.static(path.resolve(__dirname, '../react-ui/src/assets')))
