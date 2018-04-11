@@ -1,34 +1,54 @@
 require('dotenv').config()
 const express = require('express')
+const path = require('path')
+const cluster = require('cluster')
+const numCPUs = require('os').cpus().length
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const path = require('path')
 const passport = require('passport')
 
-const app = express()
+const PORT = process.env.PORT || 5000
 
-require('./db/config')
+// Multi-process to utilize all CPU cores.
+if (cluster.isMaster) {
+  console.error(`Node cluster master ${process.pid} is running`)
 
-app.use(morgan('dev'))
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+  // Fork workers.
+  for (let i = 0;  i < numCPUs;  i++) {
+    cluster.fork()
+  }
 
-app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
-app.use(express.static(path.resolve(__dirname, '../react-ui/src/assets')))
+  cluster.on('exit', (worker, code, signal) => {
+    console.error(`Node cluster worker ${worker.process.pid} exited: code ${code}, signal ${signal}`)
+  })
 
-app.use(passport.initialize())
+} else {
+  const app = express()
 
-const authRoutes = require('./routes/auth')
-const mailRoutes = require('./routes/mail')
-// const timesheetRoutes = require('./routes/timesheet')
+  require('./db/config')
 
-app.get('/*', (req, res) => {
-   res.sendFile(path.join(__dirname, '../react-ui/build', 'index.html'))
- })
+  app.use(morgan('dev'))
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({extended: true}))
 
-app.use('/auth', authRoutes)
-app.use('/mail', mailRoutes)
-// app.use('/time', timesheetRoutes)
+  // Priority serve any static files.
+  app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
+  app.use(express.static(path.resolve(__dirname, '../react-ui/src/assets')))
 
-const port = process.env.PORT || 3001
-app.listen(port, () => console.log(`app listening on ${port}`))
+  const authRoutes = require('./routes/auth')
+  const mailRoutes = require('./routes/mail')
+  // const timesheetRoutes = require('./routes/timesheet')
+
+  app.use('/auth', authRoutes)
+  app.use('/mail', mailRoutes)
+  // app.use('/time', timesheetRoutes)
+
+  // All remaining requests return the React app, so it can handle routing.
+  app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'))
+  })
+
+  app.listen(PORT, function () {
+    console.error(`Node cluster worker ${process.pid}: listening on port ${PORT}`)
+  })
+}

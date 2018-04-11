@@ -36,11 +36,7 @@ router.post('/', async (req, res, next) => {
     to: rushElectricEmail,
     from: email,
     subject,
-    text: `
-      Name: ${name}
-      Phone: ${phone}
-      ${message}
-    `
+    text: `Name: ${name}\n\nPhone: ${phone}\n\n${message}`
   }
 
   try {

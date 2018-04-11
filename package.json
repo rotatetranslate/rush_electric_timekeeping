@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": {
+    "node": "8.9.x"
+  },
   "dependencies": {
     "@sendgrid/mail": "^6.2.1",
     "bcrypt": "^1.0.3",
@@ -17,6 +20,11 @@
   },
   "scripts": {
     "seed": "node server/db/seed.js",
-    "start": "node server"
-  }
+    "start": "node server",
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ]
 }
