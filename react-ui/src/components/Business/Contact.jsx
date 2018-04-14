@@ -44,8 +44,8 @@ const Contact = ({classes}) => (
         <iframe
           className={classes.iframe}
           title="Rush Electric Map"
-          frameborder="0"
-          src={mapSrc} allowfullscreen>
+          frameBorder="0"
+          src={mapSrc} allowFullScreen>
         </iframe>
       </Paper>
     </div>

@@ -1,7 +1,7 @@
 require('./config');
 const mongoose = require('mongoose');
 const User = require('../models/user');
-const TimeSheet = require('../models/timesheet');
+const Timesheet = require('../models/timesheet');
 const Project = require('../models/project');
 
 const users = [
@@ -27,7 +27,7 @@ const projects = [
 
 const seed = async () => {
   try {
-    const removedTimesheets = await TimeSheet.remove({})
+    const removedTimesheets = await Timesheet.remove({})
     console.log('removedTimesheets', removedTimesheets)
 
     const removedProjects = await Project.remove({})
@@ -50,7 +50,7 @@ const seed = async () => {
       }
     ]
 
-    const seededTimesheets = await TimeSheet.create(timesheets)
+    const seededTimesheets = await Timesheet.create(timesheets)
     console.log('created timesheets', seededTimesheets)
     process.exit()
   } catch(error) {

@@ -8,36 +8,35 @@ import Logo from './Logo'
 
 const styles = theme => ({
   footer: {
-    // position: 'absolute',
-    // bottom: 0,
-    height: '100px',
-    // width: '100vw',
+    // height: '100px',
     '& ul': {
       color: theme.palette.primary.contrastText,
       display: 'flex',
       height: '100%',
-      // width: '100vw'
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column',
+        justifyContent: 'center'
+      }
     }
   },
   footerItem: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '0 10px',
+    padding: '10px 0',
     textAlign: 'center',
     '& h4': {
       fontWeight: 300,
       margin: '0 10px'
     },
-    '& :hover': {
-      fill: theme.palette.secondary.main
+    '&:hover': {
+      '& svg': {
+        fill: theme.palette.secondary.main,
+      }
     }
   },
   icon: {
     paddingBottom: '5px',
-    // '& :hover': {
-    //   fill: theme.palette.secondary.main
-    // }
   },
   footerList: {
     padding: '0 10px',
@@ -46,7 +45,10 @@ const styles = theme => ({
   },
   logo: {
     height: '50%',
-    marginRight: 'auto'
+    marginRight: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      margin: 0
+    }
   },
 })
 

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
-const TimeSheet = require('./timesheet')
+const Timesheet = require('./timesheet')
 
 const UserSchema = new mongoose.Schema({
   accessToken: String,
@@ -29,13 +29,13 @@ UserSchema.methods.comparePassword = function(password, cb) {
 }
 
 // UserSchema.methods.timeSheets = function(cb) {
-//   mongoose.model('TimeSheet').find({ employee: this._id }, (err, timesheets) => {
+//   mongoose.model('Timesheet').find({ employee: this._id }, (err, timesheets) => {
 //     cb(err, timesheets)
 //   })
 // }
 UserSchema.methods.timeSheets = async function() {
   try {
-    const timesheets = await mongoose.model('TimeSheet').find({ employee: this._id })
+    const timesheets = await mongoose.model('Timesheet').find({ employee: this._id })
     return timesheets
   } catch(err) {
     console.log(err)

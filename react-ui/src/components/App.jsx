@@ -40,6 +40,8 @@ const theme = createMuiTheme({
   },
 })
 
+console.log('theme?', theme)
+
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <SiteRouter />

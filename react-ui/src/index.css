@@ -4,3 +4,8 @@ body {
   font-family: sans-serif;
   background-color: #e1e2e1;
 }
+
+ul {
+  margin: 0;
+  padding: 0;
+}

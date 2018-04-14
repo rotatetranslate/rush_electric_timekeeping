@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const TimeSheet = require('./timesheet')
+const Timesheet = require('./timesheet')
 
 const ProjectSchema = new mongoose.Schema({
   details: { type: String },
@@ -7,14 +7,14 @@ const ProjectSchema = new mongoose.Schema({
 })
 //
 // ProjectSchema.methods.timeSheets = function(cb) {
-//   mongoose.model('TimeSheet').find({ project: this._id }, (err, timesheets) => {
+//   mongoose.model('Timesheet').find({ project: this._id }, (err, timesheets) => {
 //     cb(err, timesheets)
 //   })
 // }
 
 ProjectSchema.methods.timeSheets = async function() {
   try {
-    const timesheets = await mongoose.model('TimeSheet').find({ project: this._id })
+    const timesheets = await mongoose.model('Timesheet').find({ project: this._id })
     console.log('timesheets?', timesheets)
     return timesheets
   } catch(err) {

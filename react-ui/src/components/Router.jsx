@@ -28,6 +28,9 @@ const styles = theme => {
         margin: '0 20px',
         textDecoration: 'none',
       },
+      '& img': {
+        height: 60
+      },
     },
     button: {
       color: theme.palette.primary.contrastText,
@@ -36,10 +39,19 @@ const styles = theme => {
       transition: 'none',
       '& :hover': {
         backgroundColor: theme.palette.primary.light
+      },
+      [theme.breakpoints.down('sm')]: {
+        display: 'none'
       }
     },
     root: {
       transition: 'none'
+    },
+    menu: {
+      color: theme.palette.common.white,
+      [theme.breakpoints.up('md')]: {
+        display: 'none'
+      }
     }
   }
 }
@@ -51,7 +63,8 @@ const SiteRouter = (props) => {
     <Router>
       <div className={classes.navbar}>
           <ul>
-            <li className={classes.logo}><Link to="/"><Logo height={75}/></Link></li>
+            <li className={classes.menu}><MenuIcon /></li>
+            <li className={classes.logo}><Link to="/"><Logo/></Link></li>
             <li className={classes.li}><Link to="/about"><Button className={classes.button} {...props}>About</Button></Link></li>
             <li className={classes.li}><Link to="/contact"><Button className={classes.button} {...props}>Contact</Button></Link></li>
           </ul>
