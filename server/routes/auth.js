@@ -2,11 +2,10 @@ const express = require('express')
 const router = express.Router()
 const passport = require('passport')
 require('../passport/local_login')(passport)
-// require('../passport/jwt_login')(passport)
+require('../passport/jwt_login')(passport)
 // require('../passport/local_signup')(passport)
 
 router.post('/login', (req, res, next) => {
-  console.log('req.body.username', req.body)
   passport.authenticate('login', (err, token) => {
     err ? res.json({error: err.message}) : res.json({token})
   })(req, res, next)

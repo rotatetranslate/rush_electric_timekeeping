@@ -3,16 +3,16 @@ const bcrypt = require('bcrypt')
 const TimeSheet = require('./timesheet')
 
 const UserSchema = new mongoose.Schema({
-	accessToken: String,
-	admin: { type: Boolean, default: false },
-	email: { type: String, require: true, unique: true },
-	hasSetCustomPassword: { type: Boolean, default: false },
+  accessToken: String,
+  admin: { type: Boolean, default: false },
+  email: { type: String, require: true, unique: true },
+  hasSetCustomPassword: { type: Boolean, default: false },
   password: { type: String, required: true },
-	name: {type: String, required: true, unique: true }
+  name: {type: String, required: true, unique: true }
 })
 
 UserSchema.pre('save', function(next) {
-  var user = this
+  const user = this
 
   if (!user.isModified('password')) return next()
 
@@ -24,14 +24,23 @@ UserSchema.pre('save', function(next) {
 })
 
 UserSchema.methods.comparePassword = function(password, cb) {
-  var user = this
+  const user = this
   return bcrypt.compare(password, user.password, cb)
 }
 
-UserSchema.methods.timeSheets = function(cb) {
-  mongoose.model('TimeSheet').find({ employee: this._id }, (err, timesheets) => {
-    cb(err, timesheets)
-  })
+// UserSchema.methods.timeSheets = function(cb) {
+//   mongoose.model('TimeSheet').find({ employee: this._id }, (err, timesheets) => {
+//     cb(err, timesheets)
+//   })
+// }
+UserSchema.methods.timeSheets = async function() {
+  try {
+    const timesheets = await mongoose.model('TimeSheet').find({ employee: this._id })
+    return timesheets
+  } catch(err) {
+    console.log(err)
+    return err
+  }
 }
 
 const User = mongoose.model('User', UserSchema)
