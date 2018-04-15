@@ -31,6 +31,19 @@ if (cluster.isMaster) {
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({extended: true}))
 
+  // passport.serializeUser(function(user, done) {
+  //   done(null, user.id)
+  // })
+  //
+  // passport.deserializeUser(function(id, done) {
+  //   User.findById(id, function(err, user) {
+  //     done(err, user)
+  //   })
+  // })
+  //
+  // app.use(passport.initialize())
+  // app.use(passport.session())
+
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')))
   app.use(express.static(path.resolve(__dirname, '../react-ui/src/assets')))
@@ -39,13 +52,13 @@ if (cluster.isMaster) {
   const mailRoutes = require('./routes/mail')
   const projectRoutes = require('./routes/projects')
   const userRoutes = require('./routes/users')
-  const timesheetRoutes = require('./routes/timesheets')
+  // const timesheetRoutes = require('./routes/timesheets')
 
   app.use('/auth', authRoutes)
   app.use('/mail', mailRoutes)
   app.use('/projects', projectRoutes)
   app.use('/users', userRoutes)
-  app.use('/timesheets', timesheetRoutes)
+  // app.use('/timesheets', timesheetRoutes)
 
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {

@@ -3,7 +3,9 @@ import { withStyles } from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
+import { Redirect } from 'react-router-dom'
 import Logo from '../Logo'
+import { removeDuplicates, setSessionToken, getSessionToken } from '../../helpers'
 
 const styles = theme => ({
   loginContainer: {
@@ -28,6 +30,10 @@ const styles = theme => ({
   },
   title: {
     color: theme.palette.primary.contrastText
+  },
+  error: {
+    color: 'rgb(255, 199, 0)',
+    marginBottom: 0
   }
 })
 
@@ -54,34 +60,37 @@ class Login extends Component {
   }
 
   submitLoginForm = async event => {
-    console.log('submitting form')
-    const { username, password } = this.state
-    console.log(JSON.stringify({username, password}))
     event.preventDefault()
-    if (!username || !password) {
-      this.setState({ error: '⚠️ Please enter your credentials ⚠️'})
-    } else {
-      try {
-        console.log('JSON.stringify({username, password})', JSON.stringify({username, password}))
-        const response = await fetch('auth/login/', {
-          method: 'post',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({username, password})
-        })
-        console.log('response', response)
-        const json = await response.json()
-        console.log('json', json)
-      } catch(error) {
-        console.log('error logging in', error)
-      }
+
+    const { username, password } = this.state
+
+    try {
+      const response = await fetch('auth/login/', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({username, password})
+      })
+
+      const json = await response.json()
+
+      if (json.error) throw new Error(json.error)
+
+      this.setState({ error: '' })
+      setSessionToken(json.token)
+    } catch(err) {
+      this.setState({ error: `⚠️${err.message} ⚠️` })
     }
   }
 
   render() {
+    // const token = getSessionToken()
+    // if (token) return <Redirect to="/dashboard" />
+
     const { classes } = this.props
+    const { error } = this.state
     return (
       <div className={classes.loginContainer}>
 
@@ -120,6 +129,8 @@ class Login extends Component {
               InputLabelProps={nestedElementProps}
               SelectProps={nestedElementProps}
             />
+
+            <p className={classes.error}>{error}</p>
 
             <Button
               variant="raised"

@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+const passport = require('passport')
+require('../passport/admin')(passport)
 
 const removePassword = ({ _doc: { password, hasSetCustomPassword, ...rest } = {} }) => rest
 
@@ -26,16 +28,24 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 
+// const emailNewUser =
+
 router.post('/', async (req, res, next) => {
+  console.log('req.body', req.body)
+  passport.authenticate('iAdmin', async (err, res) => {
+    console.log('isAdmin err?', err)
+    console.log('isAdmin res?', res)
+    try {
+      const defaultPassword = genRandomPassword()
+      const user = await User.create({ email, name })
+      console.log('created user?', user)
+      res.status(200).json({ user })
+    } catch(err) {
+      console.log('err?', err)
+      res.status(400).json({ error: err })
+    }
+  })
   const { email, name } = req.body
-  if (!email || !name) throw new Error('Must provide name and email.')
-  try {
-    const user = await User.create({ email, name })
-    console.log('created user?', user)
-    res.status(200).json({ user })
-  } catch(err) {
-    res.status(400).json({ error: err })
-  }
 })
 
 module.exports = router

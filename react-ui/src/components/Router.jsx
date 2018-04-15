@@ -5,9 +5,10 @@ import Button from 'material-ui/Button'
 import AccountCircle from 'material-ui-icons/AccountCircle'
 import MenuIcon from 'material-ui-icons/Menu'
 import { About, Contact, Home } from './Business'
-import { Login } from './Timesheet'
+import { Login, Dashboard } from './Timesheet'
 import Footer from './Footer'
 import Logo from './Logo'
+import { getSessionToken } from '../helpers'
 
 const styles = theme => {
   console.log('mui theme?', theme)
@@ -71,7 +72,8 @@ const SiteRouter = (props) => {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/contact" component={Contact} />
-          <Route path="/login" component={Login} />
+          <Route path="/login" render={() => getSessionToken() ? <Redirect to="/dashboard" /> : <Login/> } />
+          <Route path="/dashboard" render={() => getSessionToken() ? <Dashboard/> : <Redirect to="/login" /> } />
           <Footer />
       </div>
     </Router>
