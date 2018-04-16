@@ -1,5 +1,6 @@
 import React from 'react'
 import { withStyles } from 'material-ui/styles'
+import PhotoSwiper from './PhotoSwiper'
 import rush1 from '../../assets/rush_1.jpg'
 import rush2 from '../../assets/rush_2.jpg'
 import rush3 from '../../assets/rush_3.jpg'
@@ -39,15 +40,10 @@ const About = ({classes}) => {
       <div className={classes.content}>
         <p>Rush Electric has been in the same location for over 60 years serving residential customers as well as large industrial and commercial facilities. We prefer to stay small in order to provide a more personalized service for our customers. The owner, "Mike" is always personally available and on all jobs with his electricians. we keep our cost of business down in order to save our customers and still provide top quality work expediently. We believe in forming long term trust based relationships with people. Our best advertising has always been our reputation. Call and ask about our LED products for interior and exterior lighting. We can provide an estimated energy and maintenance savings breakdown for you. We can also retrofit your existing light fixtures to LED type for additional savings. Call for free estimate anytime.</p>
       </div>
-      <div className={classes.content}>
+      {/* <div className={classes.content}>
+
       </div>
-      <span
-        className="yelp-review"
-        data-review-id="3Ndau-FDKa_1NtnUUFMC_Q"
-        data-hostname="www.yelp.com">
-        Read <a href="https://www.yelp.com/user_details?userid=5SqzRqP5lR3TQ4nYW240qA" rel="nofollow noopener">Jed R.</a>'s <a href="https://www.yelp.com/biz/rush-electric-south-el-monte-2?hrid=3Ndau-FDKa_1NtnUUFMC_Q" rel="nofollow noopener">review</a> of <a href="https://www.yelp.com/biz/8gbIZ4R1Zx8YHdJuDajnSg" rel="nofollow noopener">Rush Electric</a> on <a href="https://www.yelp.com" rel="nofollow noopener">Yelp</a>
-        <script async="async" src="https://www.yelp.com/embed/widgets.js" type="text/javascript"></script>
-      </span>
+      <PhotoSwiper/> */}
     </div>
   )
 }

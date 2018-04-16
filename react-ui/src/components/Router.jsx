@@ -69,8 +69,8 @@ const SiteRouter = (props) => {
           <ul>
             <li className={classes.menu}><MenuIcon /></li>
             <li className={classes.logo}><Link to="/"><Logo/></Link></li>
-            <li className={classes.li}><Link to="/about"><Button className={classes.button}>About</Button></Link></li>
-            <li className={classes.li}><Link to="/contact"><Button className={classes.button}>Contact</Button></Link></li>
+            <li className={classes.li}><Link to="/about"><Button className={classes.button} {...this.props}>About</Button></Link></li>
+            <li className={classes.li}><Link to="/contact"><Button className={classes.button} {...this.props}>Contact</Button></Link></li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />

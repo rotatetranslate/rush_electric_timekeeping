@@ -73,7 +73,6 @@ class ContactForm extends Component {
         <form className={classes.contactForm} onSubmit={this.submitContactForm}>
           <TextField
             required
-            autoFocus={true}
             id="name"
             label="Name"
             value={this.state.name}

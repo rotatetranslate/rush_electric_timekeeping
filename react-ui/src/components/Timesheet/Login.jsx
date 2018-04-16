@@ -104,7 +104,6 @@ class Login extends Component {
             <TextField
               required
               autoComplete="username"
-              autoFocus={true}
               id="username"
               label="Username (email)"
               value={this.state.username}
