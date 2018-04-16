@@ -9,8 +9,10 @@ opts.secretOrKey = jwtSecret
 
 module.exports = passport => {
   passport.use('jwt', new JwtStrategy(opts, async (jwt_payload, done) => {
+    console.log('in jwt strategy')
     try {
       const user = await User.findOne({_id: jwt_payload.id})
+      if (!user) throw new Error('Invalid JWT')
       const timesheets = await user.timeSheets()
       const { admin, _id: id, email, name } = user
       const payload = {
@@ -26,23 +28,3 @@ module.exports = passport => {
     }
   }))
 }
-// module.exports = passport => {
-//   passport.use('jwt', new JwtStrategy(opts, (jwt_payload, done) => {
-//     console.log('jwt_payload', jwt_payload)
-//     User.findOne({_id: jwt_payload.id}, (err, user) => {
-//       if (err || !user) return done(new Error('User not found'), false)
-//
-//       user.timeSheets((err, timesheets) => {
-//         const { admin, _id: id, email, name } = user
-//         const payload = {
-//           admin,
-//           id,
-//           email,
-//           name,
-//           timesheets
-//         }
-//         return done(null, payload)
-//       })
-//     })
-//   }))
-// }

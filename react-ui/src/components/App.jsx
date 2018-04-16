@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
+import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
+import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
 import SiteRouter from './Router'
 
 const theme = createMuiTheme({
@@ -44,7 +46,9 @@ console.log('theme?', theme)
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
-    <SiteRouter />
+    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      <SiteRouter />
+    </MuiPickersUtilsProvider>
   </MuiThemeProvider>
 )
 

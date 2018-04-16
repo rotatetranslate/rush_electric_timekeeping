@@ -8,7 +8,7 @@ import Logo from './Logo'
 
 const styles = theme => ({
   footer: {
-    // height: '100px',
+    marginTop: 'auto',
     '& ul': {
       color: theme.palette.primary.contrastText,
       display: 'flex',
@@ -56,7 +56,7 @@ const address = {
   street: '10124 Rush St.',
   city: 'South El Monte, CA 91733'
 }
-const phone = '(626) 448-8911'
+const phone = '(626) 945-5801'
 const email = 'rushelectric@att.net'
 
 const Footer = ({classes}) => {

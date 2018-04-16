@@ -16,17 +16,10 @@ const headersWithJwt = jwt => ({
   'Authorization': `JWT ${jwt}`
 })
 
-const genRandomPassword = () => {
-  const min = 49
-  const max = 122
-  return [...Array(10)].fill(null).map(x => String.fromCharCode(Math.floor(Math.random() * (max - min)) + min)).join('')
-}
-
 export {
   removeDuplicates,
   getSessionToken,
   setSessionToken,
   removeSessionToken,
   headersWithJwt,
-  genRandomPassword
 }

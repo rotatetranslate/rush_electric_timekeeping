@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { withStyles } from 'material-ui/styles'
-import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import Logo from '../Logo'
 
 const styles = theme => ({
-  paperContainer: {
+  formContainer: {
     backgroundColor: theme.palette.primary.light,
     padding: '10px 50px',
     width: '100%'
@@ -18,6 +17,9 @@ const styles = theme => ({
   contactButton: {
     width: 166,
     margin: '25px 0 0 0'
+  },
+  response: {
+    color: '#20bf55'
   }
 })
 
@@ -36,7 +38,7 @@ class ContactForm extends Component {
       phone: '',
       subject: '',
       message: '',
-      errors: []
+      responseMessage: ''
     }
   }
 
@@ -49,29 +51,25 @@ class ContactForm extends Component {
   submitContactForm = async event => {
     console.log('submitting form')
     event.preventDefault()
-    try {
-      const { errors, ...information } = this.state
-      const response = await fetch('mail/', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(information)
-      })
-      console.log('response', response)
-      // const json = await response.json()
-      // console.log('json', json)
-    } catch(error) {
-      console.log('error submitting form', error)
-    }
+    const { responseMessage, ...information } = this.state
+    const response = await fetch('mail/', {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(information)
+    })
+    // clear form
+    // mail sent successfully
+    this.setState({ responseMessage: 'Form submitted successfully!'})
   }
 
 
   render() {
     const { classes } = this.props
     return (
-      <Paper className={classes.paperContainer}>
+      <div className={classes.formContainer}>
         <form className={classes.contactForm} onSubmit={this.submitContactForm}>
           <TextField
             required
@@ -134,6 +132,8 @@ class ContactForm extends Component {
             SelectProps={nestedElementProps}
           />
 
+          <h3 className={classes.response}>{this.state.responseMessage}</h3>
+
           <Button
             variant="raised"
             color="primary"
@@ -143,7 +143,7 @@ class ContactForm extends Component {
             Submit
           </Button>
         </form>
-      </Paper>
+      </div>
     )
   }
 }

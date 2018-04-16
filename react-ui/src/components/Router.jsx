@@ -17,6 +17,9 @@ const styles = theme => {
       marginRight: 'auto'
     },
     navbar: {
+      display: 'flex',
+      flexDirection: 'column',
+      minHeight: '100vh',
       '& ul': {
         backgroundColor: theme.palette.primary.dark,
         display: 'flex',
@@ -62,12 +65,12 @@ const SiteRouter = (props) => {
 
   return (
     <Router>
-      <div className={classes.navbar}>
+      <div className={`${classes.navbar} isthisit`}>
           <ul>
             <li className={classes.menu}><MenuIcon /></li>
             <li className={classes.logo}><Link to="/"><Logo/></Link></li>
-            <li className={classes.li}><Link to="/about"><Button className={classes.button} {...props}>About</Button></Link></li>
-            <li className={classes.li}><Link to="/contact"><Button className={classes.button} {...props}>Contact</Button></Link></li>
+            <li className={classes.li}><Link to="/about"><Button className={classes.button}>About</Button></Link></li>
+            <li className={classes.li}><Link to="/contact"><Button className={classes.button}>Contact</Button></Link></li>
           </ul>
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />

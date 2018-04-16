@@ -1,20 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const { mailForm } = require('../helpers')
 
 const rushElectricEmail = 'adamberro@gmail.com'
 
-const mailForm = async message => {
-  const sgMail = require('@sendgrid/mail')
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-  try {
-    const result = sgMail.send(message)
-  } catch(error) {
-    console.log('error sending mail', error)
-  }
-}
-
 router.post('/', async (req, res, next) => {
-  console.log('mail req.body', req.body)
   const {
     name,
     email,
@@ -30,11 +20,16 @@ router.post('/', async (req, res, next) => {
     text: `Name: ${name}\n\nPhone: ${phone}\n\n${message}`
   }
 
-  try {
-    const response = await mailForm(emailMessage)
-  } catch(error) {
-    console.log(error)
-  }
+  mailForm(emailMessage)
+
+  res.status(200).json({ message: 'successfully sent' })
+
+  // try {
+  //   const response = await mailForm(emailMessage)
+  //
+  // } catch(error) {
+  //   console.log(error)
+  // }
 })
 
 module.exports = router

@@ -3,55 +3,81 @@ import { withStyles } from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import ContactForm from './ContactForm'
 
-// google maps api key
 const key = 'AIzaSyD45i356tSIhtFX0jftVrjxE9nlQQTiK4A'
 
 const styles = theme => ({
   contactContainer: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    margin: '50px 100px',
-    // maxWidth: '1024px'
+    justifyContent: 'center',
+    margin: 'auto 10px',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+      margin: 10
+    }
   },
-  contactFormContainer: {
-    // width: '35vw'
+  formContainer: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    margin: 10,
+    boxShadow: '8px 8px 15px #aaa'
+
+  },
+  contact: {
+    color: theme.palette.common.white,
+    textAlign: 'center',
+    padding: 20,
   },
   mapContainer: {
-    position: 'relative'
-    // width: '25vw'
+    backgroundColor: theme.palette.primary.light,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    margin: 10,
+    boxShadow: '8px 8px 15px #aaa',
   },
-  iframe: {
-    width: '100%'
-  }
+  mapContent: {
+    width: '100%',
+    overflow: 'hidden',
+    paddingBottom: '70%',
+    position: 'relative',
+    '& iframe': {
+      width: '100%',
+      height: '100%',
+      position: 'absolute',
+      top: 0,
+      left: 0
+    }
+  },
 })
 
-// address 10124 Rush St, South El Monte, CA 91733
-// phone (626) 448-8911
 const mapSrc = `https://www.google.com/maps/embed/v1/place?q=place_id:ChIJb7t2buzQwoARy3hxZsNv5fM&key=${key}`
-
 
 const Contact = ({classes}) => (
   <div className={classes.contactContainer}>
-    <div className={classes.mapContainer} >
-      <Paper>
+    <div className={classes.mapContainer}>
+      <div className={classes.contact}>
         <h1>Contact Us</h1>
-        <p>Please give us a call at (626) 448-8911</p>
+        <p>Please give us a call at (626) 945-5801</p>
         <p>Or, send us a message</p>
-      </Paper>
+      </div>
 
-      <Paper>
+      <div className={classes.mapContent}>
         <iframe
-          className={classes.iframe}
           title="Rush Electric Map"
           frameBorder="0"
           src={mapSrc} allowFullScreen>
         </iframe>
-      </Paper>
+      </div>
     </div>
-
-    <div classes={classes.contactFormContainer}>
-      <ContactForm/>
+    <div className={classes.formContainer}>
+      <ContactForm />
     </div>
   </div>
 )

@@ -86,8 +86,8 @@ class Login extends Component {
   }
 
   render() {
-    // const token = getSessionToken()
-    // if (token) return <Redirect to="/dashboard" />
+    const token = getSessionToken()
+    if (token) return <Redirect to="/dashboard" />
 
     const { classes } = this.props
     const { error } = this.state

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
-require('../passport/local_login')(passport)
+const local = require('../passport/local_login')(passport)
 require('../passport/jwt_login')(passport)
 
 router.post('/login', (req, res, next) => {
