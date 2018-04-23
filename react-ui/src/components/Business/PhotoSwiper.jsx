@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Swiper from 'react-id-swiper';
 
-export default class Navigation extends Component {
+class Example extends React.Component {
   render() {
     const params = {
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true
+      },
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev'
-      }
+      },
+      spaceBetween: 30
     }
 
-    return (
+    return(
       <Swiper {...params}>
-        <div>Slide 1</div>
-        <div>Slide 2</div>
-        <div>Slide 3</div>
-        <div>Slide 4</div>
-        <div>Slide 5</div>
+        <div style={{ height: '400px', width: '400px', border: '1px solid black'}}/>
+        <div style={{ height: '400px', width: '400px', border: '1px solid black'}}/>
       </Swiper>
     )
   }
 }
+
+export default Example;

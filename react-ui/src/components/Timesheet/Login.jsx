@@ -75,11 +75,12 @@ class Login extends Component {
       })
 
       const json = await response.json()
+      console.log('response', json)
 
       if (json.error) throw new Error(json.error)
 
-      this.setState({ error: '' })
       setSessionToken(json.token)
+      this.setState({ error: '' })
     } catch(err) {
       this.setState({ error: `⚠️${err.message} ⚠️` })
     }
@@ -87,6 +88,7 @@ class Login extends Component {
 
   render() {
     const token = getSessionToken()
+    console.log('token', token)
     if (token) return <Redirect to="/dashboard" />
 
     const { classes } = this.props

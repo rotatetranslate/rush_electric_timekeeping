@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken')
 const jwtSecret = process.env.JWT_SECRET
 const localStrategy = require('passport-local').Strategy
 const User = require('../models/user')
+const passport = require('passport')
 
 module.exports = passport => {
   passport.use('login', new localStrategy((username, password, done) => {

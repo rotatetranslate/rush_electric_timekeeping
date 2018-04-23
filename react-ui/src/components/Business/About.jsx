@@ -42,8 +42,8 @@ const About = ({classes}) => {
       </div>
       {/* <div className={classes.content}>
 
-      </div>
-      <PhotoSwiper/> */}
+      </div> */}
+      <PhotoSwiper/>
     </div>
   )
 }

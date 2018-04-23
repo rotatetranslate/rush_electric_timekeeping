@@ -3,6 +3,8 @@ import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles'
 import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
 import SiteRouter from './Router'
+import Footer from './Footer'
+import Navbar from './Navbar'
 
 const theme = createMuiTheme({
   overrides: {
@@ -25,9 +27,6 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-      // light: '#8a9ebb',
-      // main: '#5c708b',
-      // dark: '#30455e',
       light: '#5c708b',
       main: '#30455e',
       dark: '#031e34',
@@ -42,12 +41,12 @@ const theme = createMuiTheme({
   },
 })
 
-console.log('theme?', theme)
-
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      {/* <Navbar /> */}
       <SiteRouter />
+      <Footer />
     </MuiPickersUtilsProvider>
   </MuiThemeProvider>
 )

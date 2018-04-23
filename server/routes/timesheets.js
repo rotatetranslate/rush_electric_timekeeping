@@ -4,7 +4,7 @@
 //
 // router.get('/', async (req, res, next) => {
 //   try {
-//     const users = await User.find({})
+//     const timesheets = await Timeheet.find({})
 //     const usersWithoutPassword = users.map(removePassword)
 //     res.status(200).json({ users: usersWithoutPassword })
 //   } catch(err) {

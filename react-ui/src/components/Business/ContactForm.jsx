@@ -52,17 +52,19 @@ class ContactForm extends Component {
     console.log('submitting form')
     event.preventDefault()
     const { responseMessage, ...information } = this.state
-    const response = await fetch('mail/', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(information)
-    })
-    // clear form
-    // mail sent successfully
-    this.setState({ responseMessage: 'Form submitted successfully!'})
+    try {
+      const response = await fetch('mail/', {
+        method: 'post',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(information)
+      })
+      this.setState({ responseMessage: 'Form submitted successfully!'})
+    } catch(err) {
+      console.log(err)
+    }
   }
 
 

@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const session = require('express-session')
 const path = require('path')
 const cluster = require('cluster')
 const numCPUs = require('os').cpus().length
@@ -30,19 +31,22 @@ if (cluster.isMaster) {
   app.use(morgan('dev'))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({extended: true}))
-
+  // 
   // passport.serializeUser(function(user, done) {
+  //   console.log('serializing user', user)
   //   done(null, user.id)
   // })
   //
   // passport.deserializeUser(function(id, done) {
+  //   console.log('deserializing user id', id)
   //   User.findById(id, function(err, user) {
   //     done(err, user)
   //   })
   // })
-  //
-  // app.use(passport.initialize())
-  // app.use(passport.session())
+
+  app.use(session({ secret: 'decent secret' }));
+  app.use(passport.initialize())
+  app.use(passport.session())
 
   // Priority serve any static files.
   app.use(express.static(path.resolve(__dirname, '../react-ui/build')))

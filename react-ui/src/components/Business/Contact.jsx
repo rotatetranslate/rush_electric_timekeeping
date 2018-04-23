@@ -61,20 +61,10 @@ const mapSrc = `https://www.google.com/maps/embed/v1/place?q=place_id:ChIJb7t2bu
 
 const Contact = ({classes}) => (
   <div className={classes.contactContainer}>
-    <div className={classes.mapContainer}>
-      <div className={classes.contact}>
-        <h1>Contact Us</h1>
-        <p>Please give us a call at (626) 945-5801</p>
-        <p>Or, send us a message</p>
-      </div>
-
-      <div className={classes.mapContent}>
-        <iframe
-          title="Rush Electric Map"
-          frameBorder="0"
-          src={mapSrc} allowFullScreen>
-        </iframe>
-      </div>
+    <div className={classes.contact}>
+      <h1>Contact Us</h1>
+      <p>Please give us a call at (626) 945-5801</p>
+      <p>Or, send us a message</p>
     </div>
     <div className={classes.formContainer}>
       <ContactForm />

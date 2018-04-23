@@ -8,16 +8,29 @@ import Logo from './Logo'
 
 const styles = theme => ({
   footer: {
-    marginTop: 'auto',
+    backgroundColor: theme.palette.primary.dark,
+    // marginTop: 'auto',
+    // position: 'absolute',
+    // bottom: 0,
+    width: '100%',
     '& ul': {
+      alignItems: 'center',
       color: theme.palette.primary.contrastText,
       display: 'flex',
       height: '100%',
+      listStyle: 'none',
       [theme.breakpoints.down('sm')]: {
         flexDirection: 'column',
         justifyContent: 'center'
       }
-    }
+    },
+    '& a': {
+      textDecoration: 'none',
+      color: theme.palette.primary.contrastText
+    },
+    '& img': {
+      height: 60
+    },
   },
   footerItem: {
     display: 'flex',
@@ -69,7 +82,6 @@ const Footer = ({classes}) => {
         <li>
           <div className={classes.footerItem}>
             <LocationOn className={`${classes.icon} icon`} />
-            <h4>{address.street}</h4>
             <h4>{address.city}</h4>
           </div>
         </li>
