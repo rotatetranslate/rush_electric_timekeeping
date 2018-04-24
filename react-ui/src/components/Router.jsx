@@ -11,60 +11,62 @@ import Footer from './Footer'
 import Logo from './Logo'
 import { getSessionToken } from '../helpers'
 
-const styles = theme => {
-  console.log('mui theme?', theme)
-  return {
-    // logo: {
-    //   marginRight: 'auto',
-    //   [theme.breakpoints.down('sm')]: {
-    //     margin: '0 auto'
-    //   }
-    // },
-    navbar: {
-      display: 'flex',
-      flexDirection: 'column',
-      // minHeight: '100vh',
-      '& ul': {
-        backgroundColor: theme.palette.primary.dark,
-        display: 'flex',
-        alignItems: 'center',
-        listStyle: 'none',
-        margin: 0
-      },
-      '& a': {
-        color: theme.palette.primary.contrastText,
-        margin: '0 20px',
-        textDecoration: 'none',
-      },
-      '& img': {
-        height: 60
-      },
-    },
-    // button: {
-    //   color: theme.palette.primary.contrastText,
-    // },
-    // li: {
-    //   transition: 'none',
-    //   '& :hover': {
-    //     backgroundColor: theme.palette.primary.light
-    //   },
-    //   [theme.breakpoints.down('sm')]: {
-    //     display: 'none'
-    //   }
-    // },
-    // root: {
-    //   transition: 'none'
-    // },
-    // menu: {
-    //   color: theme.palette.common.white,
-    //   position: 'absolute',
-    //   left: 10,
-    //   [theme.breakpoints.up('md')]: {
-    //     display: 'none'
-    //   }
-    // }
-  }
-}
+// const styles = theme => {
+//   console.log('mui theme?', theme)
+//   return {
+//     logo: {
+//       marginRight: 'auto',
+//       [theme.breakpoints.down('sm')]: {
+//         margin: '0 auto'
+//       }
+//     },
+//     navbar: {
+//       display: 'flex',
+//       flexDirection: 'column',
+//       minHeight: '100vh',
+//       '& ul': {
+//         backgroundColor: theme.palette.primary.dark,
+//         display: 'flex',
+//         alignItems: 'center',
+//         listStyle: 'none',
+//         margin: 0
+//       },
+//       '& a': {
+//         color: theme.palette.primary.contrastText,
+//         margin: '0 20px',
+//         textDecoration: 'none',
+//       },
+//       // '& img': {
+//       //   height: 60
+//       // },
+//     },
+//     button: {
+//       color: theme.palette.primary.contrastText,
+//     },
+//     li: {
+//       transition: 'none',
+//       '& :hover': {
+//         backgroundColor: theme.palette.primary.light
+//       },
+//       [theme.breakpoints.down('sm')]: {
+//         display: 'none'
+//       }
+//     },
+//     root: {
+//       transition: 'none'
+//     },
+//     menu: {
+//       color: theme.palette.common.white,
+//       position: 'absolute',
+//       left: 10,
+//       [theme.breakpoints.up('md')]: {
+//         display: 'none'
+//       }
+//     }
+//   }
+// }
+
+const styles = {}
 
 const SiteRouter = ({ classes }) => (
   <Router>

@@ -8,7 +8,10 @@ const styles = theme => ({
   formContainer: {
     backgroundColor: theme.palette.primary.light,
     padding: '10px 50px',
-    width: '100%'
+    width: '100%',
+    [theme.breakpoints.down('sm')]: {
+      padding: '10px 15px'
+    }
   },
   contactForm: {
     display: 'flex',

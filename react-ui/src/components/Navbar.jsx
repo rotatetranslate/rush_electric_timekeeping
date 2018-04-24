@@ -10,7 +10,7 @@ const styles = theme => ({
   logo: {
     marginRight: 'auto',
     [theme.breakpoints.down('sm')]: {
-      margin: '0 auto'
+      margin: '0 auto',
     }
   },
   navList: {
@@ -25,7 +25,10 @@ const styles = theme => ({
       textDecoration: 'none',
     },
     '& img': {
-      height: 60
+      height: 110,
+      [theme.breakpoints.down('sm')]: {
+        height: 60
+      },
     },
   },
   button: {
@@ -80,7 +83,7 @@ class Navbar extends Component {
         <li className={classes.logo}><Link to="/"><Logo/></Link></li>
         <li className={classes.li}><Link to="/about"><Button className={classes.button} {...this.props}>About</Button></Link></li>
         <li className={classes.li}><Link to="/contact"><Button className={classes.button} {...this.props}>Contact</Button></Link></li>
-        <li className={classes.account}><Link to="/login"><AccountCircle /></Link></li>
+        {/* <li className={classes.account}><Link to="/login"><AccountCircle /></Link></li> */}
       </ul>
     )
   }
