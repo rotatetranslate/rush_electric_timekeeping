@@ -5,6 +5,7 @@ const passport = require('passport')
 require('../passport/admin')(passport)
 const { removePassword, genRandomPassword, mailForm } = require('../helpers')
 
+// get all users
 router.get('/', async (req, res, next) => {
   try {
     const users = await User.find({})
@@ -15,6 +16,7 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// get one user by id with timesheets
 router.get('/:id', async (req, res, next) => {
   const { params: { id } } = req
   try {
@@ -25,6 +27,21 @@ router.get('/:id', async (req, res, next) => {
   } catch(err) {
     res.json({ error: err })
   }
+})
+
+// delete user by id
+router.delete('/:id', (req, res, next) => {
+  const { params: { id } } = req
+  passport.authenticate('admin', async (err, admin) => {
+    try {
+      if (!admin) throw new Error('Unauthorized to perform requested action.')
+      const removedUser = await User.findOneAndRemove({ _id: id })
+      if (!removedUser) throw new Error('No user found.')
+      res.status(200).json({ successMessage: `Successfully removed user ${removedUser.name}` })
+    } catch(error) {
+      res.json({ error })
+    }
+  })(req, res, next)
 })
 
 const newUserEmail = (name, email, password) => ({
@@ -40,6 +57,7 @@ const newUserEmail = (name, email, password) => ({
   'Rush Electric'
 })
 
+// create new user
 router.post('/', (req, res, next) => {
   passport.authenticate('admin', async (err, admin) => {
     try {
@@ -56,5 +74,7 @@ router.post('/', (req, res, next) => {
     }
   })(req, res, next)
 })
+
+// upate password
 
 module.exports = router

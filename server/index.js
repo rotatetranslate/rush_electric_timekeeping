@@ -31,7 +31,7 @@ if (cluster.isMaster) {
   app.use(morgan('dev'))
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({extended: true}))
-  // 
+  //
   // passport.serializeUser(function(user, done) {
   //   console.log('serializing user', user)
   //   done(null, user.id)
@@ -56,13 +56,13 @@ if (cluster.isMaster) {
   const mailRoutes = require('./routes/mail')
   const projectRoutes = require('./routes/projects')
   const userRoutes = require('./routes/users')
-  // const timesheetRoutes = require('./routes/timesheets')
+  const timesheetRoutes = require('./routes/timesheets')
 
   app.use('/auth', authRoutes)
   app.use('/mail', mailRoutes)
   app.use('/projects', projectRoutes)
   app.use('/users', userRoutes)
-  // app.use('/timesheets', timesheetRoutes)
+  app.use('/timesheets', timesheetRoutes)
 
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {

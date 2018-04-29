@@ -9,7 +9,6 @@ opts.secretOrKey = jwtSecret
 
 module.exports = passport => {
   passport.use('jwt', new JwtStrategy(opts, async (jwt_payload, done) => {
-    console.log('in jwt strategy')
     try {
       const user = await User.findOne({_id: jwt_payload.id})
       if (!user) throw new Error('Invalid JWT')

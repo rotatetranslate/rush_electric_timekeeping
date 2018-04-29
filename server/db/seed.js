@@ -23,6 +23,9 @@ const users = [
 const projects = [
   {
     name: 'Seed Project 1'
+  },
+  {
+    name: 'Seed Project 2'
   }
 ]
 
@@ -73,6 +76,16 @@ const seed = async () => {
         employee: seededUsers[1]._id,
         hours: 8,
         project: seededProjects[0]._id
+      },
+      {
+        employee: seededUsers[1]._id,
+        hours: 8,
+        project: seededProjects[1]._id
+      },
+      {
+        employee: seededUsers[1]._id,
+        hours: 8,
+        project: seededProjects[1]._id
       }
     ].map((timesheet, i) => ({ ...timesheet, date: addDays(new Date(), i)}))
 
