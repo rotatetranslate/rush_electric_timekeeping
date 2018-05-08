@@ -9,7 +9,7 @@ import { Login, Dashboard } from './Timesheet'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import Logo from './Logo'
-import { getSessionToken } from '../helpers'
+import { getSessionToken, fetchUserInfo } from '../helpers'
 
 // const styles = theme => {
 //   console.log('mui theme?', theme)
@@ -68,17 +68,22 @@ import { getSessionToken } from '../helpers'
 
 const styles = {}
 
-const SiteRouter = ({ classes }) => (
-  <Router>
-    <div className={`${classes.navbar}`}>
-      <Navbar />
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
-      <Route path="/contact" component={Contact} />
-      <Route path="/login" render={() => getSessionToken() ? <Redirect to="/dashboard" /> : <Login/> } />
-      <Route path="/dashboard" render={() => getSessionToken() ? <Dashboard/> : <Redirect to="/login" /> } />
-    </div>
-  </Router>
-)
+const SiteRouter = (props) => {
+  console.log('props in router?', props)
+  const { classes } = props
+
+  return (
+    <Router>
+      <div className={`${classes.navbar}`}>
+        <Navbar />
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/login" render={() => getSessionToken() ? <Redirect to="/dashboard" /> : <Login/> } />
+        <Route path="/dashboard" render={() => getSessionToken() ? <Dashboard/> : <Redirect to="/login" /> } />
+      </div>
+    </Router>
+  )
+}
 
 export default withStyles(styles)(SiteRouter)

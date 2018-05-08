@@ -4,7 +4,6 @@ import DateFnsUtils from 'material-ui-pickers/utils/date-fns-utils'
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
 import SiteRouter from './Router'
 import Footer from './Footer'
-import Navbar from './Navbar'
 
 const theme = createMuiTheme({
   overrides: {
@@ -44,9 +43,8 @@ const theme = createMuiTheme({
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-      {/* <Navbar /> */}
       <SiteRouter />
-      <Footer />
+      {/* <Footer /> */}
     </MuiPickersUtilsProvider>
   </MuiThemeProvider>
 )

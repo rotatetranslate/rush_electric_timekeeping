@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { getSessionToken, removeSessionToken, headersWithJwt } from '../../helpers'
 import WeekTimesheets from './WeekTimesheets'
 import Timesheet from './Timesheet'
+import AdminDashboard from './AdminDashboard'
+import AdminNavBar from './AdminNavBar'
+import EmployeeDashboard from './EmployeeDashboard'
 
 const fetchUserInfo = async jwt => {
   const headers = headersWithJwt(jwt)
@@ -35,11 +38,13 @@ class Dashboard extends Component {
   render() {
     const { user } = this.state
     if (user) {
-      return (
-        <div><Timesheet timesheet={user.timesheets[0]}/></div>
-      )
+      if (user.admin) {
+        return <AdminDashboard user={user} />
+      } else {
+        return <EmployeeDashboard user={user} />
+      }
     }
-    return <div>No user</div>
+    return null
   }
 }
 

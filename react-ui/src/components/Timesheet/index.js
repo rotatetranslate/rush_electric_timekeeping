@@ -1,12 +1,12 @@
 import Login from './Login'
 import Timesheet from './Timesheet'
-import Admin from './Admin'
+import AdminDashboard from './AdminDashboard'
 import Dashboard from './Dashboard'
 import WeekTimesheets from './WeekTimesheets'
 
 export {
   Login,
   Timesheet,
-  Admin,
+  AdminDashboard,
   Dashboard
 }

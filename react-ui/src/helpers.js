@@ -16,10 +16,25 @@ const headersWithJwt = jwt => ({
   'Authorization': `JWT ${jwt}`
 })
 
+const fetchUserInfo = async jwt => {
+  const headers = headersWithJwt(jwt)
+  try {
+    const res = await fetch('/auth/jwt', {
+      method: 'post',
+      headers
+    })
+    const { user } = await res.json()
+    return user
+  } catch(err) {
+    console.log(err)
+  }
+}
+
 export {
   removeDuplicates,
   getSessionToken,
   setSessionToken,
   removeSessionToken,
   headersWithJwt,
+  fetchUserInfo
 }

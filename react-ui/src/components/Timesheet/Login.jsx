@@ -14,7 +14,7 @@ const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
-    height: '100vh',
+    height: '80vh',
   },
   paperContainer: {
     backgroundColor: theme.palette.primary.light,
@@ -96,7 +96,7 @@ class Login extends Component {
     return (
       <div className={classes.loginContainer}>
 
-        <Logo height={100} />
+        {/* <Logo height={100} /> */}
 
         <h2 className={classes.title}>Time Sheets</h2>
         <Paper className={classes.paperContainer}>

@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { withStyles } from 'material-ui/styles'
 import Paper from 'material-ui/Paper'
 import ContactForm from './ContactForm'
+import Footer from '../Footer'
+
 
 const styles = theme => ({
   contactContainer: {
@@ -31,16 +33,19 @@ const styles = theme => ({
 })
 
 const Contact = ({classes}) => (
-  <div className={classes.contactContainer}>
-    <div className={classes.contact}>
-      <h1>Contact Us</h1>
-      <p>Please give us a call at (626) 945-5801</p>
-      <p>Or, send us a message</p>
+  <Fragment>
+    <div className={classes.contactContainer}>
+      <div className={classes.contact}>
+        <h1>Contact Us</h1>
+        <p>Please give us a call at (626) 945-5801</p>
+        <p>Or, send us a message</p>
+      </div>
+      <div className={classes.formContainer}>
+        <ContactForm />
+      </div>
     </div>
-    <div className={classes.formContainer}>
-      <ContactForm />
-    </div>
-  </div>
+    <Footer />
+  </Fragment>
 )
 
 export default withStyles(styles)(Contact)
