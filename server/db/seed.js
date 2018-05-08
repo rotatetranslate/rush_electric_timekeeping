@@ -8,7 +8,7 @@ const addDays = require('date-fns/add_days')
 const users = [
   {
     email: 'rushelectric@att.net',
-    password: 'password',
+    password: '0915Madonna!!!',
     admin: true,
     name: 'Mike Izykowski'
   },
