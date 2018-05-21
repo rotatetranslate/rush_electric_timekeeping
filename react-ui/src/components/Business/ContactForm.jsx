@@ -52,7 +52,6 @@ class ContactForm extends Component {
   }
 
   submitContactForm = async event => {
-    console.log('submitting form')
     event.preventDefault()
     const { responseMessage, ...information } = this.state
     try {

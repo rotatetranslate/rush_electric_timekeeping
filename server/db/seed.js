@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 const Timesheet = require('../models/timesheet')
 const Project = require('../models/project')
+const Testimonial = require('../models/testimonial')
 const addDays = require('date-fns/add_days')
 
 const users = [
@@ -29,6 +30,17 @@ const projects = [
   }
 ]
 
+const testimonials = [
+  {
+    name: 'John C. Fakename',
+    body: 'Rush electric did a great job! Would recommend! 10/10. Rush electric did a great job! Would recommend! 10/10. Rush electric did a great job! Would recommend! 10/10. Rush electric did a great job! Would recommend! 10/10. '
+  },
+  {
+    name: 'Anonymous',
+    body: 'thanks for the really great work! thanks for the really great work! thanks for the really great work! thanks for the really great work! thanks for the really great work! thanks for the really great work!'
+  }
+]
+
 const seed = async () => {
   try {
     const removedTimesheets = await Timesheet.remove({})
@@ -40,11 +52,17 @@ const seed = async () => {
     const removedUsers = await User.remove({})
     console.log('removedUsers', removedUsers)
 
+    const removedTestimonials = await Testimonial.remove({})
+    console.log('removedTestimonials', removedTestimonials)
+
     const seededUsers = await User.create(users)
     console.log('created users', seededUsers)
 
     const seededProjects = await Project.create(projects)
     console.log('created projects', seededProjects)
+
+    const seededTestimonials = await Testimonial.create(testimonials)
+    console.log('created testimonials', seededTestimonials)
 
     const timesheets = [
       {

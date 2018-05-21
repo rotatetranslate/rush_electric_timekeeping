@@ -6,6 +6,7 @@ import AccountCircle from 'material-ui-icons/AccountCircle'
 import MenuIcon from 'material-ui-icons/Menu'
 import MailOutline from 'material-ui-icons/MailOutline'
 import FlashOn from 'material-ui-icons/FlashOn'
+import ChatIcon from 'material-ui-icons/Chat'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import Drawer from 'material-ui/Drawer'
 import Divider from 'material-ui/Divider'
@@ -101,6 +102,7 @@ class Navbar extends Component {
         <li className={classes.logo}><Link to="/"><Logo/></Link></li>
         <li className={classes.li}><Link to="/about"><Button className={classes.button} {...this.props}>About</Button></Link></li>
         <li className={classes.li}><Link to="/contact"><Button className={classes.button} {...this.props}>Contact</Button></Link></li>
+        <li className={classes.li}><Link to="/testimonial"><Button className={classes.button} {...this.props}>Testimonials</Button></Link></li>
         <li className={classes.account}><Link to="/login"><AccountCircle /></Link></li>
       </ul>
 
@@ -118,14 +120,24 @@ class Navbar extends Component {
             </ListItemIcon>
             <Link to="/about"><ListItemText primary="About" /></Link>
           </ListItem>
+
           <ListItem button>
             <ListItemIcon>
               <MailOutline />
             </ListItemIcon>
             <Link to="/contact"><ListItemText primary="Contact" /></Link>
           </ListItem>
+
+          <ListItem button>
+            <ListItemIcon>
+              <ChatIcon />
+            </ListItemIcon>
+            <Link to="/testimonial"><ListItemText primary="Testimonials" /></Link>
+          </ListItem>
         </List>
+
         <Divider />
+
         <List component="nav">
           <ListItem button>
             <ListItemIcon>

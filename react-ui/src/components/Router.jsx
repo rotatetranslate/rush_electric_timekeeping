@@ -4,7 +4,7 @@ import { withStyles } from 'material-ui/styles'
 import Button from 'material-ui/Button'
 import AccountCircle from 'material-ui-icons/AccountCircle'
 import MenuIcon from 'material-ui-icons/Menu'
-import { About, Contact, Home } from './Business'
+import { About, Contact, Home, Testimonials } from './Business'
 import { Login, Dashboard } from './Timesheet'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -79,6 +79,7 @@ const SiteRouter = (props) => {
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/contact" component={Contact} />
+        <Route path="/testimonial" component={Testimonials} />
         <Route path="/login" render={() => getSessionToken() ? <Redirect to="/dashboard" /> : <Login/> } />
         <Route path="/dashboard" render={() => getSessionToken() ? <Dashboard/> : <Redirect to="/login" /> } />
       </div>

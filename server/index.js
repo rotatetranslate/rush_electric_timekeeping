@@ -57,12 +57,14 @@ if (cluster.isMaster) {
   const projectRoutes = require('./routes/projects')
   const userRoutes = require('./routes/users')
   const timesheetRoutes = require('./routes/timesheets')
+  const testimonialRoutes = require('./routes/testimonials')
 
   app.use('/auth', authRoutes)
   app.use('/mail', mailRoutes)
   app.use('/projects', projectRoutes)
   app.use('/users', userRoutes)
   app.use('/timesheets', timesheetRoutes)
+  app.use('/testimonials', testimonialRoutes)
 
   // All remaining requests return the React app, so it can handle routing.
   app.get('*', function(request, response) {
