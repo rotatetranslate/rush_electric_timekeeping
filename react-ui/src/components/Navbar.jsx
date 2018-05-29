@@ -101,6 +101,7 @@ class Navbar extends Component {
         <li className={classes.menu} onClick={this.toggleDrawer}><MenuIcon /></li>
         <li className={classes.logo}><Link to="/"><Logo/></Link></li>
         <li className={classes.li}><Link to="/about"><Button className={classes.button} {...this.props}>About</Button></Link></li>
+        <li className={classes.li}><Link to="/photos"><Button className={classes.button} {...this.props}>Photos</Button></Link></li>
         <li className={classes.li}><Link to="/contact"><Button className={classes.button} {...this.props}>Contact</Button></Link></li>
         <li className={classes.li}><Link to="/testimonial"><Button className={classes.button} {...this.props}>Testimonials</Button></Link></li>
         <li className={classes.account}><Link to="/login"><AccountCircle /></Link></li>

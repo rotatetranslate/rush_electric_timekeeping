@@ -38,7 +38,7 @@ const Contact = ({classes}) => (
       <div className={classes.contact}>
         <h1>Contact Us</h1>
         <p>Please give us a call at (626) 945-5801</p>
-        <p>Or, send us a message</p>
+        <p>Or, send us a message using the form below.</p>
       </div>
       <div className={classes.formContainer}>
         <ContactForm />

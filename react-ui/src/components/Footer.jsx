@@ -5,6 +5,9 @@ import Phone from 'material-ui-icons/Phone'
 import MailOutline from 'material-ui-icons/MailOutline'
 import LocationOn from 'material-ui-icons/LocationOn'
 import Logo from './Logo'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import facebook from '@fortawesome/fontawesome-free-brands/faFacebookF'
+import yelp from '@fortawesome/fontawesome-free-brands/faYelp'
 
 const styles = theme => ({
   footer: {
@@ -58,11 +61,21 @@ const styles = theme => ({
   },
   logo: {
     height: '50%',
-    marginRight: 'auto',
+    // marginRight: 'auto',
     [theme.breakpoints.down('sm')]: {
       margin: 0
     }
   },
+  social: {
+    color: theme.palette.primary.contrastText,
+    marginRight: 'auto',
+    '& svg': {
+      padding: '0 20px',
+      '&:hover': {
+        color: theme.palette.secondary.main
+      }
+    }
+  }
 })
 
 const address = {
@@ -78,6 +91,16 @@ const Footer = ({classes}) => {
       <ul className={classes.footerList}>
         <li className={classes.logo}>
           <Logo height='100%' />
+        </li>
+        <li>
+          <div className={classes.social}>
+            <a href="https://www.yelp.com/biz/rush-electric-south-el-monte-2" target="_blank">
+              <FontAwesomeIcon icon={yelp} size="2x"/>
+            </a>
+            <a href="https://www.facebook.com/Rush-Electric-150903571618161" target="_blank">
+              <FontAwesomeIcon icon={facebook} size="2x"/>
+            </a>
+          </div>
         </li>
         <li>
           <div className={classes.footerItem}>
