@@ -4,7 +4,7 @@ const User = require('../models/user')
 const Timesheet = require('../models/timesheet')
 const Project = require('../models/project')
 const Testimonial = require('../models/testimonial')
-const addDays = require('date-fns/add_days')
+// const addDays = require('date-fns/add_days')
 
 const users = [
   {
@@ -64,48 +64,48 @@ const seed = async () => {
     // const seededTestimonials = await Testimonial.create(testimonials)
     // console.log('created testimonials', seededTestimonials)
 
-    const timesheets = [
-      {
-        employee: seededUsers[1]._id,
-        hours: 8,
-        project: seededProjects[0]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 7,
-        project: seededProjects[0]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 9,
-        project: seededProjects[0]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 10,
-        project: seededProjects[0]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 8,
-        project: seededProjects[0]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 8,
-        project: seededProjects[0]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 8,
-        project: seededProjects[1]._id
-      },
-      {
-        employee: seededUsers[1]._id,
-        hours: 8,
-        project: seededProjects[1]._id
-      }
-    ].map((timesheet, i) => ({ ...timesheet, date: addDays(new Date(), i)}))
+    // const timesheets = [
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 8,
+    //     project: seededProjects[0]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 7,
+    //     project: seededProjects[0]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 9,
+    //     project: seededProjects[0]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 10,
+    //     project: seededProjects[0]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 8,
+    //     project: seededProjects[0]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 8,
+    //     project: seededProjects[0]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 8,
+    //     project: seededProjects[1]._id
+    //   },
+    //   {
+    //     employee: seededUsers[1]._id,
+    //     hours: 8,
+    //     project: seededProjects[1]._id
+    //   }
+    // ].map((timesheet, i) => ({ ...timesheet, date: addDays(new Date(), i)}))
 
     // const seededTimesheets = await Timesheet.create(timesheets)
     // console.log('created timesheets', seededTimesheets)
