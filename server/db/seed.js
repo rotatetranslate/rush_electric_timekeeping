@@ -55,14 +55,14 @@ const seed = async () => {
     const removedTestimonials = await Testimonial.remove({})
     console.log('removedTestimonials', removedTestimonials)
 
-    const seededUsers = await User.create(users)
-    console.log('created users', seededUsers)
+    // const seededUsers = await User.create(users)
+    // console.log('created users', seededUsers)
 
-    const seededProjects = await Project.create(projects)
-    console.log('created projects', seededProjects)
+    // const seededProjects = await Project.create(projects)
+    // console.log('created projects', seededProjects)
 
-    const seededTestimonials = await Testimonial.create(testimonials)
-    console.log('created testimonials', seededTestimonials)
+    // const seededTestimonials = await Testimonial.create(testimonials)
+    // console.log('created testimonials', seededTestimonials)
 
     const timesheets = [
       {
@@ -107,8 +107,8 @@ const seed = async () => {
       }
     ].map((timesheet, i) => ({ ...timesheet, date: addDays(new Date(), i)}))
 
-    const seededTimesheets = await Timesheet.create(timesheets)
-    console.log('created timesheets', seededTimesheets)
+    // const seededTimesheets = await Timesheet.create(timesheets)
+    // console.log('created timesheets', seededTimesheets)
     process.exit()
   } catch(error) {
     console.log('error seeding db: ', error)
