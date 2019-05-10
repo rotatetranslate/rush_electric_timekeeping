@@ -148,7 +148,7 @@ class Testimonials extends Component {
 
           {testimonials.map(testimonial => (
             <div className={classes.testimonial}>
-              <h3 className={classes.name}>{`${testimonial.name} \u2022 ${format(testimonial.date, 'MM/DD/YY')}`}</h3>
+              <h3 className={classes.name}>{`${testimonial.name} \u2022 ${format(testimonial.date, 'MM/dd/yy')}`}</h3>
               <p className={classes.body}>{testimonial.body}</p>
             </div>
           ))}
