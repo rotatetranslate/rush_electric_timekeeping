@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 const { mailForm } = require('../helpers')
 
-// const rushElectricEmail = 'rushelectric@att.net'
-const rushElectricEmail = 'adamberro@gmail.com'
+const rushElectricEmail = 'rushelectric@att.net'
 
 router.post('/', async (req, res, next) => {
   const {
