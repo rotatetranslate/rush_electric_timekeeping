@@ -55,8 +55,8 @@ const seed = async () => {
     const removedTestimonials = await Testimonial.remove({})
     console.log('removedTestimonials', removedTestimonials)
 
-    // const seededUsers = await User.create(users)
-    // console.log('created users', seededUsers)
+    const seededUsers = await User.create(users)
+    console.log('created users', seededUsers)
 
     // const seededProjects = await Project.create(projects)
     // console.log('created projects', seededProjects)
